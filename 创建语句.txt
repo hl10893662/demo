@@ -1,0 +1,33 @@
+    SELECT DISTINCT
+          Z.fid, Z.frgnCode,Z.fagenIdCode,Z.fcode , Z.fname,Z.fitemIdCode,Z.fpidCode,Z.fagenItemIdCode,
+          Z.fstdCode, Z.fstdName,Z.fitemStdIdCode, Z.fmincharge,Z.fmaxcharge,
+          Z.funits ,
+          Z.fitemSortId, Z.feffDate, Z.fexpDate,
+          Z.fshareDirectCode,Z.fshareDirectName, Z.ffundsNature,Z.ffundsNatureName,     
+          Z.fisAgenRemain,Z.fremainCode,Z.fremainName,Z.fremainValue, Z.fpaymodecode,
+          Z.fsubId,Z.fsubCode,Z.fsubName,Z.fsubYear, 
+          Z.fmnem,Z.flevel, Z.fisLeaf, Z.fisFinal,Z.fmemo, Z.fauthor,
+          Z.fcustom1, Z.fcustom2, Z.fcustom3, Z.fversion,Z.falterCode,Z.fcreateTime, Z.fupdateTime 
+        --Z.agenItemId, z.agenItemStdId,Z.itemId ,Z.subjectId
+      FROM (
+          SELECT distinct T.fid, T.fpidCode, T.fitemIdCode, T.fcode, T.fname, T.fmnem, T.flevel, T.fisLeaf, T.fisFinal, 
+          AI.ffundsNature, T.fitemSortId, T.feffDate, T.fexpDate, 
+          T.fshareDirectCode,DTT.fname as fshareDirectName, T.fsubId, T.fmemo, T.fauthor, T.fversion, T.falterCode, T.fcreateTime, 
+          T.fupdateTime, T.fcustom1, T.fcustom2, T.fcustom3,AI.ffundsNatureName, 
+          Uis.fcode as fstdCode, UIS.fname as fstdName,Uis.fitemStdIdCode, Uis.fmincharge,Uis.fmaxcharge,
+          ( Case when Uis.funits is null then T.funits else Uis.funits end ) AS funits, 
+          AI.fagenItemIdCode,AI.fagenIdCode,AI.frgnCode,AI.fisAgenRemain,AI.fpaymodecode ,
+          AI.fremainCode,DI.FNAME AS fremainName,
+          ( CASE WHEN  AI.FREMAINCODE IS NULL OR  AI.FREMAINCODE = ''  OR  AI.FREMAINCODE = '2' THEN CONCAT(AI.fremainValue,'') ELSE concat(AI.fremainValue,'') END ) AS fremainValue, 
+          S.fcode as fsubCode,s.fname as fsubName,s.fyear as fsubYear 
+        --  AI.fid AS agenItemId,UAIS.fid AS agenItemStdId,T.fid AS itemId,S.fid AS subjectId 
+          FROM UAB_AGEN_ITEM AI 
+          LEFT JOIN UAB_AGEN_ITEM_STD UAIS ON UAIS.fagenitemidcode = AI.fagenItemIdCode AND UAIS.fisfinal ='1' AND UAIS.fisenable='1'                  
+          LEFT JOIN Uab_Item_Std UIS ON UIS.fitemstdidcode = UAIS.fitemstdidcode AND UIS.fisfinal ='1'  
+          LEFT JOIN UAB_ITEM T ON (T.FITEMIDCODE = AI.FITEMIDCODE )
+          LEFT JOIN UAA_DICT DTT ON T.FSHAREDIRECTCODE = DTT.FCODE AND DTT.FOBJ = 'SHARE_DIRECT'   
+          LEFT JOIN UAB_SUBJECT S ON AI.FSUBID = S.FID 
+          LEFT JOIN UAA_DICT DI ON AI.FREMAINCODE = DI.FCODE AND DI.FOBJ = 'SHARE_TYPE'
+     
+	      ) Z
+	    ORDER BY Z.frgnCode,Z.fagenIdCode,Z.FCODE,Z.FstdCode
