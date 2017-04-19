@@ -1,0 +1,136 @@
+-- Create table
+create table UAB_AGEN_ITEM_STD_DETAIL
+(
+  fid              VARCHAR2(32),
+  frgncode         VARCHAR2(60),
+  fagenidcode      VARCHAR2(32),
+  fcode            VARCHAR2(60),
+  fname            VARCHAR2(200),
+  fitemidcode      VARCHAR2(32),
+  fpidcode         VARCHAR2(32),
+  fagenitemidcode  VARCHAR2(32),
+  fstdcode         VARCHAR2(60),
+  fstdname         VARCHAR2(200),
+  fitemstdidcode   VARCHAR2(32),
+  fmincharge       NUMBER,
+  fmaxcharge       NUMBER,
+  funits           VARCHAR2(10),
+  fitemsortid      VARCHAR2(32),
+  feffdate         VARCHAR2(10),
+  fexpdate         VARCHAR2(10),
+  fsharedirectcode VARCHAR2(2),
+  fsharedirectname VARCHAR2(200),
+  ffundsnature     VARCHAR2(2),
+  ffundsnaturename VARCHAR2(200),
+  fisagenremain    NUMBER,
+  fremaincode      VARCHAR2(2),
+  fremainname      VARCHAR2(200),
+  fremainvalue     VARCHAR2(32),
+  fpaymodecode     VARCHAR2(1),
+  fsubid           VARCHAR2(32),
+  fsubcode         VARCHAR2(60),
+  fsubname         VARCHAR2(200),
+  fsubyear         VARCHAR2(4),
+  fmnem            VARCHAR2(200),
+  flevel           NUMBER,
+  fisleaf          NUMBER,
+  fmemo            VARCHAR2(200),
+  fisfinal         NUMBER,
+  fcustom1         VARCHAR2(200),
+  fcustom2         VARCHAR2(200),
+  fcustom3         VARCHAR2(200),
+  fauthor          VARCHAR2(200),
+  fversion         NUMBER,
+  faltercode       NUMBER,
+  fcreatetime      VARCHAR2(17),
+  fupdatetime      VARCHAR2(17)
+)
+tablespace USERS
+  pctfree 10
+  initrans 1
+  maxtrans 255;
+-- Add comments to the columns 
+comment on column UAB_AGEN_ITEM_STD_DETAIL.frgncode
+  is '区划编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fagenidcode
+  is '单位识别码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fcode
+  is '项目编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fname
+  is '项目名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fitemidcode
+  is '项目识别码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fpidcode
+  is '父项目识别码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fagenitemidcode
+  is '单位项目识别码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fstdcode
+  is '标准编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fstdname
+  is '标准名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fitemstdidcode
+  is '项目标准识别码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fmincharge
+  is '区间最小值';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fmaxcharge
+  is '区间最大值';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.funits
+  is '计量单位';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fitemsortid
+  is '项目分类ID';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.feffdate
+  is '生效日期';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fexpdate
+  is '失效日期';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsharedirectcode
+  is '分成方向编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsharedirectname
+  is '分成方向名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.ffundsnature
+  is '资金性质';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.ffundsnaturename
+  is '资金性质名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fisagenremain
+  is '是否单位留存';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fremaincode
+  is '留存类型编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fremainname
+  is '留存类型名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fremainvalue
+  is '留存值';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fpaymodecode
+  is '支付方式编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsubid
+  is '预算科目ID';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsubcode
+  is '预算科目编码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsubname
+  is '预算科目名称';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fsubyear
+  is '预算科目年';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fmnem
+  is '助记码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.flevel
+  is '项目级别';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fisleaf
+  is '项目是否最细级';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fmemo
+  is '项目备注';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fisfinal
+  is '是否最终数据';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fcustom1
+  is '自定义字段';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fcustom2
+  is '自定义字段';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fcustom3
+  is '自定义字段';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fauthor
+  is '编制人';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fversion
+  is '版本号';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.faltercode
+  is '变更类型代码';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fcreatetime
+  is '创建时间';
+comment on column UAB_AGEN_ITEM_STD_DETAIL.fupdatetime
+  is '修改时间';
